@@ -21,6 +21,46 @@ class DicePage extends StatefulWidget {
   _DicePageState createState() => _DicePageState();
 }
 
+//Challenge 2 - Randomly Change Both the dice
+class _DicePageState extends State<DicePage> {
+  var leftImageClick = 1;
+  var rightImageClick = 1;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: FlatButton(
+        onPressed: () {
+          setState(() {
+            leftImageClick = Random().nextInt(6) + 1;
+            rightImageClick = Random().nextInt(6) + 1;
+          });
+        },
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Image.asset("images/dice$leftImageClick.png"),
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Image.asset("images/dice$rightImageClick.png"),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+//Challenge 1 - Randomly Change single dic
+/*
 class _DicePageState extends State<DicePage> {
   var leftImageClick = 1;
   var rightImageClick = 1;
@@ -57,6 +97,8 @@ class _DicePageState extends State<DicePage> {
     );
   }
 }
+*/
+
 /*
 class DicePage1 extends StatelessWidget {
   @override
